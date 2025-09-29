@@ -33,6 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+        viewBinding = true // if you still use XML
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.0"
+    }
 }
 
 dependencies {
@@ -52,7 +60,22 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0")
     implementation("androidx.activity:activity-ktx:1.8.2")
 
-    // firebase auth
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    // Compose BOM (auto-manages versions)
+    implementation(platform("androidx.compose:compose-bom:2024.09.01"))
+
+    // Core UI
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // Material3
+    implementation("androidx.compose.material3:material3")
+
+    // Activity for Compose
+    implementation("androidx.activity:activity-compose:1.9.2")
+
+    // Lifecycle + ViewModel Compose support
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
 }
